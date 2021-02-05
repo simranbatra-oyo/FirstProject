@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FeedbackService implements IFeedbackService{
@@ -22,5 +23,18 @@ public class FeedbackService implements IFeedbackService{
 
         return feedbacks;
     }
+
+    /*
+
+    @Override
+    public Optional<List<Feedback>> getReviewById(Long hotel_id) {
+        //Optional<Hotel> h=repository.findById(hotel_id).orElse(null);
+        //return h;
+        Optional<List<Feedback>> feedback = (Optional<List<Feedback>>) repository.findById(hotel_id);
+        //Optional<Hotel> opt = Optional.ofNullable(user);
+        return feedback;
+    }
+
+    */
 
 }

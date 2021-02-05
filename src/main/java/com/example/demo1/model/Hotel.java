@@ -19,7 +19,7 @@ public class Hotel {
     private String hotel_address;
     private String occupancies;
     private float minimum_price;
-    private float hotel_rating;
+    private float hotel_ratings;
 
     //CREATE TABLE hotels(hotel_id INT PRIMARY KEY, hotel_name VARCHAR(20),hotel_contact_no VARCHAR(10),hotel_address VARCHAR(40),occupancies av_oc,minimum_price float,hotel_ratings float);
 

@@ -21,28 +21,19 @@ public class HotelService implements IHotelService{
     @Override
     public List<Hotel> findAll() {
 
-        var hotels = (List<Hotel>) repository.findAll();
+        List<Hotel> hotels =  repository.findAll();
 
         return hotels;
     }
 
     @Override
-    public Hotel getHotelById(Long hotel_id) {
-        /*
+    public Optional<Hotel> getHotelById(Long hotel_id) {
+        //Optional<Hotel> h=repository.findById(hotel_id).orElse(null);
+        //return h;
+        Optional<Hotel> hotel = repository.findById(hotel_id);
+        //Optional<Hotel> opt = Optional.ofNullable(user);
+        return hotel;
 
-        for( Hotel hotel:)
-        {
-            if(hotel.getHotel_id()==hotel_id)
-                return hotel;
-        }
-        return null;
-
-         */
-        //return repository.findById(hotel_id);
-        Optional<Hotel> hotel;
-        hotel = repository.findById(hotel_id);
-        return hotel.orElse(null);
-        //.orElseThrow(() -> new FlightNotFoundException(flightId));
     }
 
 }
