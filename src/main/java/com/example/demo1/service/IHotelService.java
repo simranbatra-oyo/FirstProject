@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IHotelService {
-
-
     List<Hotel> findAll();
-    //Optional<Hotel>getHotelById(Long hotel_id);
-    Optional<Hotel>getHotelById(Long hotel_id);
+
+    Optional<Hotel> getHotelById(Long hotel_id);
 }

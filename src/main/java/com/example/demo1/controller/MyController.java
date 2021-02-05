@@ -10,17 +10,18 @@ import com.example.demo1.service.FeedbackService;
 import com.example.demo1.service.HotelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = {"http://localhost:3000","http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:4200"})
 @RestController
 public class MyController {
 
@@ -32,11 +33,9 @@ public class MyController {
 
     @Autowired
     private FeedbackService feedbackService;
-    //private FeedbackRepository feedbackService;
 
     @Autowired
     private FeedbackRepository feedbackRepository;
-
 
 
     @Autowired
@@ -63,17 +62,6 @@ public class MyController {
         return "register_success";
     }
 
-    /*
-    @GetMapping("/showHotels")
-    public List<Hotel> findHotels(Model model) {
-
-        List<Hotel> hotelList = hotelService.findAll();
-
-        //model.addAttribute("rooms", hotelList);
-
-        return hotelList;
-    }
-     */
     @GetMapping("/showHotels")
     public List<Hotel> findHotels() {
 
@@ -86,38 +74,10 @@ public class MyController {
     public @ResponseBody
     Optional<Hotel> findHotelsDetails(@PathVariable("hotel_id") Long hotel_id) {
         return hotelService.getHotelById(hotel_id);
-
-        //Hotel hotelByID = hotelRepository.findById(hotel_id);
-
-
-        //model.addAttribute("rooms", hotelList);
-
-        //return hotelByID;
     }
 
-    /*
-    @GetMapping("/{flight-id}")
-    public @ResponseBody
-    Flight getFlightById(@PathVariable("flight-id") String flightId) {
-        return flightService.getFlightById(flightId);
-    }
-     */
-
-    /*
     @GetMapping("/showReviewForHotel/{hotel_id}")
-    public @ResponseBody
-    Optional<List<Feedback>>findReviewForHotel(@PathVariable("hotel_id") Long hotel_id){
-       return feedbackService.getReviewById(hotel_id);
-
-
-        List<Feedback> allReview = feedbackService.findAll();
-        return allReview;
-
-
-    }
-    */
-    @GetMapping("/showReviewForHotel/{hotel_id}")
-    public List<Feedback>findReviewForHotel(@PathVariable("hotel_id") Long hotel_id){
+    public List<Feedback> findReviewForHotel(@PathVariable("hotel_id") Long hotel_id) {
         return feedbackRepository.findRoomByStatus(hotel_id);
     }
 
@@ -126,19 +86,13 @@ public class MyController {
     public String addReviewForHotel(@PathVariable Long user_id, @PathVariable Long hotel_id, @Param("rating") float rating, @Param("review") String review) {
         //how to get primary key and add that
         Feedback feedback = new Feedback();
-        //feedback.setFeedback_id(idCounter);
-        //Long l= new Long(0);
-        //feedback.setFeedback_id(l);
-        feedback.setUser_id(user_id);
-        feedback.setHotel_id(hotel_id);
+        User user = userRepository.findByUser_id(user_id);
+        feedback.setUser(user);
+        Hotel hotel = hotelRepository.getOne(hotel_id);
+        feedback.setHotel(hotel);
         feedback.setRating(rating);
         feedback.setReview(review);
         feedbackRepository.save(feedback);
-        //URI uri= ServletUriComponentsBuilder.fromCurrentRequest().path()
-        //return new ResponseEntity<Feedback>(feedback, HttpStatus.OK);
         return "Added new review to repo!";
     }
-
-
-
 }
