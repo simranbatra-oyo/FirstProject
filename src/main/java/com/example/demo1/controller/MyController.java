@@ -31,8 +31,11 @@ public class MyController {
     @Autowired
     private HotelRepository hotelRepository;
 
+    /*
     @Autowired
     private FeedbackService feedbackService;
+
+     */
 
     @Autowired
     private FeedbackRepository feedbackRepository;
@@ -86,7 +89,9 @@ public class MyController {
     public String addReviewForHotel(@PathVariable Long user_id, @PathVariable Long hotel_id, @Param("rating") float rating, @Param("review") String review) {
         //how to get primary key and add that
         Feedback feedback = new Feedback();
-        User user = userRepository.findByUser_id(user_id);
+        //User user = userRepository.findByUser_id(user_id);
+
+        User user = userRepository.getOne(user_id);
         feedback.setUser(user);
         Hotel hotel = hotelRepository.getOne(hotel_id);
         feedback.setHotel(hotel);

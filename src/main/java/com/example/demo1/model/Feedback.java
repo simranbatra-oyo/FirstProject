@@ -14,17 +14,42 @@ import javax.persistence.Table;
 @Data
 @Table(name = "feedbacks")
 public class Feedback {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long feedback_id;
 
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     @ManyToOne
     private User user;
 
-    @JoinColumn(name = "hotelId")
+    @JoinColumn(name = "hotel_id")
     @ManyToOne
     private Hotel hotel;
+
+
+
+
+    //public static long idCounter=0;
+    //private Long user_id;
+
+    /*@ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    //@JsonManagedReference
+    private User user;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id", referencedColumnName = "hotel_id")
+    //@JsonManagedReference
+    private Hotel hotel;
+
+     */
+
+
+    //private Hotel hotel;
+    //
 
     private float rating;
     private String review;

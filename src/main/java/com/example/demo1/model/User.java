@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
     @Id
+    //@GeneratedValue(strategy= GenerationType.TABLE)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long user_id;
     private String password;

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 public class Hotel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy= GenerationType.TABLE)
     private Long hotel_id;
     private String hotel_name;
     private String hotel_contact_no;
