@@ -54,6 +54,12 @@ public class MyController {
         return "signup_form";
     }
 
+    @GetMapping("/feedback/{feedback_id}")
+    public @ResponseBody
+    Feedback getFeedback(@PathVariable("feedback") Long feedback_id){
+        return feedbackRepository.getOne(feedback_id);
+    }
+
     @PostMapping("/process_register")
     public String processRegister(User user) {
 
