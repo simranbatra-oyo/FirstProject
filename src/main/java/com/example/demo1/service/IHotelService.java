@@ -5,8 +5,8 @@ import com.example.demo1.model.Hotel;
 import java.util.List;
 import java.util.Optional;
 
-public interface IHotelService {
-    List<Hotel> findAll();
+interface IHotelService {
+    List<Hotel> getAllHotels();
 
-    Optional<Hotel> getHotelById(Long hotel_id);
+    Hotel getHotelById(Long hotel_id);
 }
