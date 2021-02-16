@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface IHotelService {
     List<Hotel> findAll();
 
-    Optional<Hotel> getHotelById(Long hotel_id);
+    Hotel getHotelById(Long hotel_id);
 }

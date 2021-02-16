@@ -1,28 +1,39 @@
 package com.example.demo1.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 @Entity
 @Data
 @Table(name = "hotels")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Hotel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@GeneratedValue(strategy= GenerationType.TABLE)
+    @Column(name = "hotel_id")
     private Long hotel_id;
-    private String hotel_name;
-    private String hotel_contact_no;
-    private String hotel_address;
-    private String occupancies;
-    private float minimum_price;
-    private float hotel_ratings;
 
-    //CREATE TABLE hotels(hotel_id INT PRIMARY KEY, hotel_name VARCHAR(20),hotel_contact_no VARCHAR(10),hotel_address VARCHAR(40),occupancies av_oc,minimum_price float,hotel_ratings float);
+    @Column(name="hotel_name")
+    private String hotel_name;
+
+    @Column(name = "hotel_contact_no")
+    private String hotel_contact_no;
+
+    @Column(name = "hotel_address")
+    private String hotel_address;
+
+    @Column(name = "occupancies")
+    @Enumerated(EnumType.STRING)
+    private Occupancy occupancies;
+
+    @Column(name = "minimum_price")
+    private float minimum_price;
+
+    @Column(name = "hotel_ratings")
+    private float hotel_ratings;
 
 
 }

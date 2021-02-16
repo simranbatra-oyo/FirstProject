@@ -9,10 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FeedbackRepository extends CrudRepository<Feedback, Long>, JpaRepository<Feedback, Long> {
+public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
 
-    @Query("SELECT f FROM Feedback f WHERE f.hotel = ?1")
-    List<Feedback> findRoomByStatus(Long hotelId);
+//    @Query("SELECT f FROM Feedback f WHERE f.hotel = ?1")
+//    List<Feedback> findRoomByStatus(Long hotelId);
+
+    @Query(value = "SELECT * FROM feedbacks f WHERE f.hotel_id = ?1", nativeQuery = true)
+    List<Feedback> findFeedbacksByHotelId(Long hotel_id);
 
 //    public Feedback save(Feedback feedback){
 //        feedback.add(feedback);
