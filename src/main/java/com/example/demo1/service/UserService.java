@@ -18,7 +18,6 @@ public class UserService {
     private UserRepository repository;
 
 
-
     public UserDto validateUserDto(UserDto userDto){
 
         String userInputUsername=userDto.getUser_name();

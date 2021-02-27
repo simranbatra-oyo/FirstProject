@@ -23,6 +23,17 @@ public class FeedbackDto{
     @JsonProperty("review")
     private String review;
 
+    public FeedbackDto(){
+
+    }
+
+    public FeedbackDto(Long hotel_id, Long user_id, float rating, String review) {
+        this.hotel_id = hotel_id;
+        this.user_id = user_id;
+        this.rating = rating;
+        this.review = review;
+    }
+
     public static FeedbackDto get(Feedback feedback){
         return FeedbackDto.builder()
                 .hotel_id(feedback.getHotel().getHotel_id())

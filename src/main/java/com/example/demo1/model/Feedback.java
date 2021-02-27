@@ -49,6 +49,17 @@ public class Feedback {
     @Column(name = "review")
     private String review;
 
+    public Feedback(){
+    }
+
+    public Feedback(Long feedback_id, User user, Hotel hotel, float rating, String review) {
+        this.feedback_id = feedback_id;
+        this.user = user;
+        this.hotel = hotel;
+        this.rating = rating;
+        this.review = review;
+    }
+
     public static Feedback get(FeedbackDto feedbackDto, Hotel hotel, User user) {
         Feedback feedback = new Feedback();
         feedback.setHotel(hotel);

@@ -10,4 +10,4 @@ INSERT INTO hotels(hotel_name, hotel_contact_no, hotel_address, occupancies, min
 
 
 INSERT INTO feedbacks(hotel_id, user_id, rating, review) VALUES (1,2,4,'Located just near the fort in city(perfect location).');
--- INSERT INTO feedbacks(hotel_id, user_id, rating, review) VALUES (1,1,3.5,'Hotel is good but rooms are very compact.');
+INSERT INTO feedbacks(hotel_id, user_id, rating, review) VALUES (1,1,3.5,'Hotel is good but rooms are very compact.');

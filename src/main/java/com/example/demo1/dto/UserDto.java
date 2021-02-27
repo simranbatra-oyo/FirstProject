@@ -18,10 +18,20 @@ public class UserDto {
     @JsonProperty("password")
     private String password;
 
+    public UserDto(String user_name, String password) {
+        this.user_name = user_name;
+        this.password = password;
+    }
+
+    public UserDto(){
+
+    }
+
     public static UserDto get(User user){
         return UserDto.builder()
                 .user_name(user.getUser_name())
                 .password(user.getPassword())
                 .build();
     }
+
 }
