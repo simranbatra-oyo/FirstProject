@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -22,6 +23,7 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @SpringBootTest(classes = Demo1Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class HotelControllerIT {
     @Autowired
     private TestRestTemplate restTemplate;
@@ -93,7 +95,8 @@ public class HotelControllerIT {
         );
         //System.out.println(response);
         //<200,[{"hotel_id":1,"hotel_name":"Hotel Indraprasth","hotel_contact_no":"8867896754","hotel_address":"Near AIR Office, Shramik Nagar, Indore","occupancies":"SINGLE","minimum_price":700.0,"hotel_ratings":3.0},{"hotel_id":2,"hotel_name":"Hotel Ashirwad","hotel_contact_no":"8902456123","hotel_address":"Gandhi Nagar,Gujarat","occupancies":"DOUBLE","minimum_price":1000.0,"hotel_ratings":4.5},{"hotel_id":4,"hotel_name":"Hotel Inn Express Hyderabad Banjara","hotel_contact_no":"7131335610","hotel_address":"Erranmannzil Colony,Somajiguda,Hyderabad","occupancies":"SINGLE","minimum_price":1500.0,"hotel_ratings":4.0}],[Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", Transfer-Encoding:"chunked", Date:"Fri, 26 Feb 2021 06:28:34 GMT", Keep-Alive:"timeout=60", Connection:"keep-alive"]>
-        String expected= "[{\"hotel_id\":1,\"hotel_name\":\"Hotel Indraprasth\",\"hotel_contact_no\":\"8867896754\",\"hotel_address\":\"Near AIR Office, Shramik Nagar, Indore\",\"occupancies\":\"SINGLE\",\"minimum_price\":700.0,\"hotel_ratings\":3.0},{\"hotel_id\":2,\"hotel_name\":\"Hotel Ashirwad\",\"hotel_contact_no\":\"8902456123\",\"hotel_address\":\"Gandhi Nagar,Gujarat\",\"occupancies\":\"DOUBLE\",\"minimum_price\":1000.0,\"hotel_ratings\":4.5}, {\"hotel_id\":4,\"hotel_name\":\"Hotel Inn Express Hyderabad Banjara\",\"hotel_contact_no\":\"7131335610\",\"hotel_address\":\"Erranmannzil Colony,Somajiguda,Hyderabad\",\"occupancies\":\"SINGLE\",\"minimum_price\":1500.0,\"hotel_ratings\":4.0}]";
+        //String expected= "[{\"hotel_id\":1,\"hotel_name\":\"Hotel Indraprasth\",\"hotel_contact_no\":\"8867896754\",\"hotel_address\":\"Near AIR Office, Shramik Nagar, Indore\",\"occupancies\":\"SINGLE\",\"minimum_price\":700.0,\"hotel_ratings\":3.0},{\"hotel_id\":2,\"hotel_name\":\"Hotel Ashirwad\",\"hotel_contact_no\":\"8902456123\",\"hotel_address\":\"Gandhi Nagar,Gujarat\",\"occupancies\":\"DOUBLE\",\"minimum_price\":1000.0,\"hotel_ratings\":4.5}, {\"hotel_id\":4,\"hotel_name\":\"Hotel Inn Express Hyderabad Banjara\",\"hotel_contact_no\":\"7131335610\",\"hotel_address\":\"Erranmannzil Colony,Somajiguda,Hyderabad\",\"occupancies\":\"SINGLE\",\"minimum_price\":1500.0,\"hotel_ratings\":4.0}]";
+        String expected="[{\"hotel_id\":1,\"hotel_name\":\"Hotel Indraprasth\",\"hotel_contact_no\":\"8867896754\",\"hotel_address\":\"Near AIR Office, Shramik Nagar, Indore\",\"occupancies\":\"SINGLE\",\"minimum_price\":700.0,\"hotel_ratings\":3.0},{\"hotel_id\":2,\"hotel_name\":\"Hotel Ashirwad\",\"hotel_contact_no\":\"8902456123\",\"hotel_address\":\"Gandhi Nagar,Gujarat\",\"occupancies\":\"DOUBLE\",\"minimum_price\":1000.0,\"hotel_ratings\":4.5},{\"hotel_id\":4,\"hotel_name\":\"Hotel Inn Express Hyderabad Banjara\",\"hotel_contact_no\":\"7131335610\",\"hotel_address\":\"Erranmannzil Colony,Somajiguda,Hyderabad\",\"occupancies\":\"SINGLE\",\"minimum_price\":1500.0,\"hotel_ratings\":4.0}]";
         //System.out.println(response);
         //<200,[{"hotel_id":1,"hotel_name":"Hotel Indraprasth","hotel_contact_no":"8867896754","hotel_address":"Near AIR Office, Shramik Nagar, Indore","occupancies":"SINGLE","minimum_price":700.0,"hotel_ratings":3.0},{"hotel_id":2,"hotel_name":"Hotel Ashirwad","hotel_contact_no":"8902456123","hotel_address":"Gandhi Nagar,Gujarat","occupancies":"DOUBLE","minimum_price":1000.0,"hotel_ratings":4.5},{"hotel_id":4,"hotel_name":"Hotel Inn Express Hyderabad Banjara","hotel_contact_no":"7131335610","hotel_address":"Erranmannzil Colony,Somajiguda,Hyderabad","occupancies":"SINGLE","minimum_price":1500.0,"hotel_ratings":4.0}],[Vary:"Origin", "Access-Control-Request-Method", "Access-Control-Request-Headers", Content-Type:"application/json", Transfer-Encoding:"chunked", Date:"Fri, 26 Feb 2021 07:59:27 GMT", Keep-Alive:"timeout=60", Connection:"keep-alive"]>
         //System.out.println(response.getBody());
