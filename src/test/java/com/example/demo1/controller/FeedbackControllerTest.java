@@ -28,9 +28,8 @@ class FeedbackControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Mock
+    @MockBean
     private FeedbackService feedbackService;
-
 
     @Test
     void findReviewForHotel() throws Exception{
