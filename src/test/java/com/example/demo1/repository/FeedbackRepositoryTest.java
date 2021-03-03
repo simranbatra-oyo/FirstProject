@@ -4,12 +4,21 @@ import com.example.demo1.model.Feedback;
 import com.example.demo1.model.Hotel;
 import com.example.demo1.model.Occupancy;
 import com.example.demo1.model.User;
+//import com.example.demo1.resources.DataConfi;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,10 +26,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Rollback(value = false)
+//@Configuration
+//@PropertySource({"classpath:com/example/demo1/"})
+//@ContextConfiguration(
+//        classes = { DataConfi.class },
+//        loader = AnnotationConfigContextLoader.class)
+//@Transactional
+//@ContextConfiguration(
+//        classes = { JpaConfig.class },
+//        loader = AnnotationConfigContextLoader.class)
+//@Transactional
 class FeedbackRepositoryTest {
 
+//    @Autowired
+//    private TestEntityManager entityManager;
+
     @Autowired
+//    @Resource
     private FeedbackRepository repository;
 
     @Test
@@ -60,9 +84,10 @@ class FeedbackRepositoryTest {
         Hotel hotel=new Hotel((long)2,"Hotel Ashirwad","8902456123","Gandhi Nagar,Gujarat",Occupancy.DOUBLE,(float)1000,(float)4);
 
         Feedback feedbackToSave=new Feedback(3L,user,hotel,(float)2.5,"Rooms are not clean");
+//        entityManager.persist(feedbackToSave);
         Feedback feedback=repository.save(feedbackToSave);
         assertThat(feedback).isNotNull();
-       //assertThat(feedback.getFeedback_id()).isEqualTo(3L);
+        //assertThat(feedback.getFeedback_id()).isEqualTo(3L);
         //System.out.println(feedback);
         //Feedback(feedback_id=1, user=User(user_id=1, user_name=Rajeev Singh, password=abc, user_phone_no=7623467423, user_email_id=rajeev@gmail.com), hotel=Hotel(hotel_id=2, hotel_name=Hotel Ashirwad, hotel_contact_no=8902456123, hotel_address=Gandhi Nagar,Gujarat, occupancies=DOUBLE, minimum_price=1000.0, hotel_ratings=4.5), rating=2.5, review=Rooms are not clean)
     }

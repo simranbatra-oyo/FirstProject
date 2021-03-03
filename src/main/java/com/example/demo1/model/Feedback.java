@@ -52,6 +52,14 @@ public class Feedback {
     public Feedback(){
     }
 
+//    public Feedback( User user, Hotel hotel, float rating, String review) {
+//        //this.feedback_id = feedback_id;
+//        this.user = user;
+//        this.hotel = hotel;
+//        this.rating = rating;
+//        this.review = review;
+//    }
+
     public Feedback(Long feedback_id, User user, Hotel hotel, float rating, String review) {
         this.feedback_id = feedback_id;
         this.user = user;

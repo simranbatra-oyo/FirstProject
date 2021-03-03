@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 
@@ -21,7 +23,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-//@TestPropertySource(locations = {"classpath:com/example/demo1/test.properties"})
+//@TestPropertySource(locations = {"classpath:com/example/demo1/"})
+//@TestPropertySource(locations = {"classpath:com/example/demo1/"})
+//@Configuration
+//@PropertySource({"classpath:com/example/demo1/"})
 class HotelRepositoryTest {
 
     @Autowired
@@ -62,9 +67,9 @@ class HotelRepositoryTest {
     public void save(){
         Hotel hotel=new Hotel((long)5,"Hotel Royal","7623145670","33 kent street,Bhopal", Occupancy.SINGLE,(float)1250.0,(float) 4.5);
         //entityManager.persist(hotel);
-        repository.save(hotel);
-
-        assertThat(hotel).isNotNull();
+        Hotel addedHotel=repository.save(hotel);
+        //System.out.println(addedHotel);
+        assertThat(addedHotel).isNotNull();
         assertThat(hotel.getHotel_id()).isEqualTo(5L);
     }
 

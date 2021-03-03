@@ -7,6 +7,7 @@ import javax.persistence.*;
 //import javax.validation.constraints.NotNull;
 //import org.hibernate.validator.constraints.Length;
 
+
 @Entity
 @Data
 @Table(name = "hotels")
@@ -61,6 +62,18 @@ public class Hotel {
         this.minimum_price = minimum_price;
         this.hotel_ratings = hotel_ratings;
     }
+
+
+
+//    public Hotel(String hotel_name, String hotel_contact_no, String hotel_address, Occupancy occupancies, float minimum_price, float hotel_ratings) {
+//       // this.hotel_id = hotel_id;
+//        this.hotel_name = hotel_name;
+//        this.hotel_contact_no = hotel_contact_no;
+//        this.hotel_address = hotel_address;
+//        this.occupancies = occupancies;
+//        this.minimum_price = minimum_price;
+//        this.hotel_ratings = hotel_ratings;
+//    }
 
 //    public Hotel(Long hotel_id, String hotel_name, String hotel_contact_no, String hotel_address, float minimum_price, float hotel_ratings) {
 //        this.hotel_id = hotel_id;

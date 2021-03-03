@@ -3,13 +3,21 @@ package com.example.demo1;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.web.WebAppConfiguration;
+//import org.junit.platform.suite.api.SelectPackages;
 
-@SpringBootTest
+@SpringBootTest(classes = Demo1Application.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@WebAppConfiguration
+//@SelectPackages({"com.examples.demo1"})
 //@TestPropertySource(locations = {"classpath:test-configuration.properties"})
-//@TestPropertySource(locations = {"classpath:com/example/demo1/test.properties"})
-class Demo1ApplicationTests {
+//@Configuration
+//@PropertySource({"classpath:com/example/demo1"})
+//@TestPropertySource(locations = {"classpath:com/example/demo1"})
+
+
+public class Demo1ApplicationTests {
+
 
     @Test
     void contextLoads() {

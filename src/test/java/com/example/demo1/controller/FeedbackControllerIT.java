@@ -4,22 +4,32 @@ import com.example.demo1.Demo1Application;
 import com.example.demo1.dto.FeedbackDto;
 import com.fasterxml.jackson.core.io.JsonEOFException;
 import org.json.JSONException;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 
 import java.util.List;
 
 @SpringBootTest(classes = Demo1Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@TestPropertySource(locations = {"classpath:com/example/demo1/"})
+//@Configuration
+//@PropertySource({"classpath:com/example/demo1/"})
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class FeedbackControllerIT {
     @Autowired
     private TestRestTemplate restTemplate;
@@ -33,6 +43,7 @@ public class FeedbackControllerIT {
         return "http://localhost:" + port + uri;
     }
 
+    @Order(1)
     @Test
     public void findReviewForHotel() throws JSONException {
         HttpEntity<String>entity=new HttpEntity<String>(null,headers);
@@ -48,6 +59,7 @@ public class FeedbackControllerIT {
 
     }
 
+    @Order(2)
     @Test
     public void addReviewForHotel() throws JSONException{
         FeedbackDto feedbackDto=new FeedbackDto(2L,1L,(float)4.5,"Services are good");
