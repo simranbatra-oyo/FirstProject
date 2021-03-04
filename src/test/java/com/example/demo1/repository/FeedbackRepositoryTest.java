@@ -40,7 +40,10 @@ import static org.junit.jupiter.api.Assertions.*;
 //        classes = { JpaConfig.class },
 //        loader = AnnotationConfigContextLoader.class)
 //@Transactional
+@PropertySource(value = {"classpath:application-test.properties"}, encoding = "UTF-8")
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
 class FeedbackRepositoryTest {
 
 //    @Autowired

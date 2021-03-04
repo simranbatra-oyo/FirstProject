@@ -18,6 +18,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 //import org.springframework.mock.web.MockHttpServletRequest;
@@ -34,6 +35,8 @@ import org.springframework.test.context.TestPropertySource;
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+
+@ActiveProfiles("test")
 public class UserControllerIT {
     @Autowired
     private TestRestTemplate restTemplate;

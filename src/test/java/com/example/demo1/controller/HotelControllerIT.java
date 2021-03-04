@@ -4,6 +4,7 @@ import com.example.demo1.Demo1Application;
 import com.example.demo1.model.Hotel;
 import com.example.demo1.model.Occupancy;
 import com.example.demo1.repository.HotelRepository;
+import com.example.demo1.repository.JpaConfig;
 import org.json.JSONException;
 import org.junit.jupiter.api.MethodOrderer;
 
@@ -23,6 +24,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.TestPropertySource;
 
 
@@ -32,11 +34,12 @@ import java.util.List;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
-@SpringBootTest(classes = Demo1Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = {Demo1Application.class, JpaConfig.class},webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+@ActiveProfiles("test")
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class HotelControllerIT {
     @Autowired
