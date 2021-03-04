@@ -2,8 +2,10 @@ package com.example.demo1.controller;
 
 import com.example.demo1.Demo1Application;
 import com.example.demo1.dto.UserDto;
+import com.example.demo1.repository.JpaConfig;
 import org.json.JSONException;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -27,8 +29,8 @@ import org.springframework.test.context.TestPropertySource;
 //
 //import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest(classes = Demo1Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@SpringBootTest(classes = {Demo1Application.class, JpaConfig.class},webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})

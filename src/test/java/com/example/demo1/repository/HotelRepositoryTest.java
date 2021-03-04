@@ -4,6 +4,7 @@ import com.example.demo1.model.Hotel;
 import com.example.demo1.model.Occupancy;
 import org.json.JSONArray;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,11 +23,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class HotelRepositoryTest {
 
     @Autowired

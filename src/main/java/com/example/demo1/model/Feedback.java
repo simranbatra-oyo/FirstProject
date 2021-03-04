@@ -3,10 +3,12 @@ package com.example.demo1.model;
 import com.example.demo1.dto.FeedbackDto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.extern.java.Log;
 
 import javax.persistence.*;
 
 @Entity
+@Log
 @Data
 @Table(name = "feedbacks")
 @JsonIgnoreProperties(ignoreUnknown = true)

@@ -6,10 +6,11 @@ import com.example.demo1.model.Occupancy;
 import com.example.demo1.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class FeedbackDtoTest {
 
     public static final Long hotel_id=1L;

@@ -2,10 +2,11 @@ package com.example.demo1.model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserTest {
 
     public static final Long user_id=1L;

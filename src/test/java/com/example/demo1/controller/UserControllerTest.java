@@ -5,6 +5,7 @@ import com.example.demo1.model.User;
 import com.example.demo1.service.UserService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -28,9 +29,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(UserController.class)
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserControllerTest {
 
     @Autowired

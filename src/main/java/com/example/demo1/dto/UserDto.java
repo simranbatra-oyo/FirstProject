@@ -24,7 +24,6 @@ public class UserDto {
     }
 
     public UserDto(){
-
     }
 
     public static UserDto get(User user){

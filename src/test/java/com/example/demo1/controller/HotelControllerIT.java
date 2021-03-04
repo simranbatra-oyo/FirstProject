@@ -33,7 +33,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 
 @SpringBootTest(classes = Demo1Application.class,webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
