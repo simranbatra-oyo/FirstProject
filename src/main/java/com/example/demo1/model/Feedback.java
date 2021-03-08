@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Feedback {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "feedback_id")
     private Long feedback_id;
 

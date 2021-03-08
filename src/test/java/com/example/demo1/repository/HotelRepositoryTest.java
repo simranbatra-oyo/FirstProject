@@ -15,6 +15,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.TestPropertySource;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class HotelRepositoryTest {
 
@@ -40,6 +42,7 @@ class HotelRepositoryTest {
 
     @Test
     public void findAll(){
+
         List<Hotel> hotels=repository.findAll();
         assertEquals(4,hotels.size());
         //System.out.println(hotels);
@@ -65,14 +68,15 @@ class HotelRepositoryTest {
         assertNull(hotel);
     }
 
+    @Transactional
     @Test
     public void save(){
-        Hotel hotel=new Hotel((long)5,"Hotel Royal","7623145670","33 kent street,Bhopal", Occupancy.SINGLE,(float)1250.0,(float) 4.5);
+        Hotel hotel=new Hotel(null,"Hotel Royal","7623145670","33 kent street,Bhopal", Occupancy.SINGLE,(float)1250.0,(float) 4.5);
         //entityManager.persist(hotel);
         Hotel addedHotel=repository.save(hotel);
         //System.out.println(addedHotel);
         assertThat(addedHotel).isNotNull();
-        assertThat(hotel.getHotel_id()).isEqualTo(5L);
+        //assertThat(hotel.getHotel_id()).isEqualTo(5L);
     }
 
     @Test

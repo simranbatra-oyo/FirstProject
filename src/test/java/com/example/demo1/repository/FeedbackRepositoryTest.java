@@ -40,7 +40,8 @@ import static org.junit.jupiter.api.Assertions.*;
 //        classes = { JpaConfig.class },
 //        loader = AnnotationConfigContextLoader.class)
 //@Transactional
-@PropertySource(value = {"classpath:application-test.properties"}, encoding = "UTF-8")
+
+//@PropertySource(value = {"classpath:application-test.properties"}, encoding = "UTF-8")
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
@@ -89,7 +90,7 @@ class FeedbackRepositoryTest {
         User user=new User(1L,"Rajeev Singh","abc","7623467423","rajeev@gmail.com");
         Hotel hotel=new Hotel((long)2,"Hotel Ashirwad","8902456123","Gandhi Nagar,Gujarat",Occupancy.DOUBLE,(float)1000,(float)4);
 
-        Feedback feedbackToSave=new Feedback(3L,user,hotel,(float)2.5,"Rooms are not clean");
+        Feedback feedbackToSave=new Feedback(null,user,hotel,(float)2.5,"Rooms are not clean");
 //        entityManager.persist(feedbackToSave);
         Feedback feedback=repository.save(feedbackToSave);
         assertThat(feedback).isNotNull();

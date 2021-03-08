@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //@TestPropertySource(locations = {"classpath:com/example/demo1/"})
 //@Configuration
 //@PropertySource({"classpath:com/example/demo1/"})
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserRepositoryTest {
 
